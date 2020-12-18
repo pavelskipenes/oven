@@ -12,6 +12,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <cmath>
 
 void oven(int load_rate){
 
@@ -45,7 +46,12 @@ int main(int argc, char* argv[]){
 
     int load_rate;
     try{
-        load_rate = std::stoi(argv[1]);
+        load_rate = round(std::stoi(argv[1]));
+
+        if(load_rate > 100 || load_rate < 0){
+            throw std::out_of_range("value needs to be between 1 and 99");
+        }
+
     }catch(const std::invalid_argument& ia){
         std::cerr << "Invalid argument: " << ia.what() << "\n";
         return 1;
