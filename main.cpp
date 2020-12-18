@@ -9,6 +9,17 @@
  * 
  */
 
-void main(){
-    while(true);
+#include <iostream>
+
+void oven(){
+
+    while(true){
+
+    }
+}
+
+int main(){
+
+    oven();
+    return 0;
 }
