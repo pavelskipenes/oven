@@ -10,16 +10,51 @@
  */
 
 #include <iostream>
+#include <thread>
+#include <chrono>
 
-void oven(){
+void oven(int load_rate){
+
+    using namespace std::chrono_literals;
+    const std::chrono::seconds CYCLE_TIME = 1s;
 
     while(true){
+        auto start = std::chrono::high_resolution_clock::now();
+        auto now = std::chrono::high_resolution_clock::now();
+        auto diff = now - start;
 
+        while(true){
+            now = std::chrono::high_resolution_clock::now();
+            diff = now - start;
+            if(diff > (float)load_rate/100 * CYCLE_TIME){
+                break;
+            }
+            // TODO: useless power-consuming non-memory instructions
+        }
+
+        std::this_thread::sleep_for(CYCLE_TIME - diff);
     }
 }
 
-int main(){
+int main(int argc, char* argv[]){
 
-    oven();
+    if(argc != 2){
+        std::cout << "Usage: " << argv[0] << "load rate [1-99]\n";
+        return 1;
+    }
+
+    int load_rate;
+    try{
+        load_rate = std::stoi(argv[1]);
+    }catch(const std::invalid_argument& ia){
+        std::cerr << "Invalid argument: " << ia.what() << "\n";
+        return 1;
+    }catch(const std::out_of_range& oor){
+        std::cerr << "Invalid argument: " << oor.what() << "\n";
+        return 1;
+    }
+
+    oven(load_rate);
+
     return 0;
 }
