@@ -9,8 +9,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: compile
-      run: g++ main.cpp
+    - name: build
+      run: make
   
   release:
     name: Create Release
