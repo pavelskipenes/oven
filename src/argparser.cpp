@@ -1,3 +1,14 @@
+/**
+ * @file argparser.cpp
+ * @author Pavel Skipenes (pavelgs@stud.ntnu.no)
+ * @brief Module that parses and validates the arguments
+ * @version 0.1
+ * @date 23-12-2020
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include <iostream>
 #include <cmath>
 
