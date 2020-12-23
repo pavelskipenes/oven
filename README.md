@@ -12,15 +12,17 @@ Transform your laptop into portable oven without spending money on actually oven
 ![KDE System Guard](docs/k_sys_guard.png)
 ![htop](docs/htop.png)
 
-
-
-## Compile locally
+## Compile from source
 ```bash
 git clone https://github.com/pavelnoen94/oven.git
 cd oven
 make -j$(nproc)
 # execute with 50% load:
 build/oven 50
+# install:
+sudo make install
+# uninstall:
+sudo make uninstall
 ```
 
 ## Local development
