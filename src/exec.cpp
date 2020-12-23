@@ -22,6 +22,10 @@ std::string exec(const char* cmd) {
         pclose(pipe);
         throw;
     }
-    pclose(pipe);
+    #ifdef unix
+        pclose(pipe);
+    #else
+        _pclose(pipe);
+    #endif
     return result;
 }
