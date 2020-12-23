@@ -11,21 +11,31 @@ CC = g++
 SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))
 OBJ_FILES = $(subst $(SOURCE_DIR),$(BUILD_DIR),$(SRC_FILES:.cpp=.o))
 
+QUITE = @
+
 .DEFAULT_GOAL = build
 build: $(OBJ_FILES) | $(BUILD_DIR)
 	$(QUITE) $(CC) $(CPP_FLAGS) $(OBJ_FILES) -o $(BUILD_DIR)$(NAME_EXECUTABLE)
 
 # generic object file generation
 $(BUILD_DIR)%.o : $(SOURCE_DIR)%.cpp | $(BUILD_DIR)
-	$(CC) $< $(CPP_FLAGS) -c -o $@
+	$(QUITE) $(CC) $< $(CPP_FLAGS) -c -o $@
 
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+	$(QUITE) mkdir -p $(BUILD_DIR)
 
 .PHONY: docs
 docs:
-	doxygen
+	$(QUITE) doxygen
 
 .PHONY: clean
 clean:
-	rm -rf $(BUILD_DIR) docs/html docs/latex
+	$(QUITE) rm -rf $(BUILD_DIR) docs/html docs/latex
+
+.PHONY: install
+install: build
+	$(QUITE) cp build/oven /usr/bin/oven
+
+.PHONY: uninstall
+uninstall:
+	$(QUITE) rm -f /usr/bin/oven
