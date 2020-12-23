@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @author Pavel Skipenes (pavelgs@stud.ntnu.no)
- * @brief
+ * @brief Just main
  * @version 0.1
  * @date 18-12-2020
  *
