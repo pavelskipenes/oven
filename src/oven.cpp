@@ -2,8 +2,10 @@
 #include <thread>
 #include <atomic>
 #include <csignal>
+#include <vector>
 
 #include "oven.h"
+#include "core_count.h"
 
 static std::atomic<bool> terminate_threads(false);
 static void oven_thread(int load_rate, std::atomic<bool>* terminate_ptr);
@@ -11,8 +13,16 @@ static void signalHandler(int signum);
 
 void oven(int load_rate){
     signal(SIGINT, signalHandler);
-    std::thread thread(oven_thread, load_rate, &terminate_threads);
-    thread.join();
+
+    std::vector<std::thread> threads(get_core_count());
+
+    for(auto &thread : threads){
+        thread = std::thread(oven_thread, load_rate, &terminate_threads);
+    }
+
+    for(auto &thread : threads){
+        thread.join();
+    }
 }
 
 void signalHandler(int signum) {
