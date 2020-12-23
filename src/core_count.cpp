@@ -1,9 +1,9 @@
 #include <iostream>
 #include <exec.h>
 
-#include "core.h"
+#include "core_count.h"
 
-int core_count(){
+int get_core_count(){
     int number_of_cores;
     try
     {
