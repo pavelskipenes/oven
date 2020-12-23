@@ -9,7 +9,7 @@ SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))
 # list of all object files
 OBJ_FILES = $(subst $(SOURCE_DIR),$(BUILD_DIR),$(SRC_FILES:.cpp=.o))
 
-CPP_FLAGS = -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR)
+CPP_FLAGS = -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -lpthread
 CC = g++
 
 .PHONY: clean
