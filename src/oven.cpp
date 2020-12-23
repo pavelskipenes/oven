@@ -1,14 +1,31 @@
 #include <chrono>
 #include <thread>
+#include <atomic>
+#include <csignal>
 
 #include "oven.h"
 
+static std::atomic<bool> terminate_threads(false);
+static void oven_thread(int load_rate, std::atomic<bool>* terminate_ptr);
+static void signalHandler(int signum);
+
 void oven(int load_rate){
+    signal(SIGINT, signalHandler);
+    std::thread thread(oven_thread, load_rate, &terminate_threads);
+    thread.join();
+}
+
+void signalHandler(int signum) {
+    (void)signum; // suppress unused parameter warning
+    terminate_threads = true;
+}
+
+void oven_thread(int load_rate, std::atomic<bool>* terminate_ptr){
 
     using namespace std::chrono_literals;
-    const std::chrono::seconds CYCLE_TIME = 1s;
+    const std::chrono::milliseconds CYCLE_TIME = 100ms;
 
-    while(true){
+    while(!terminate_ptr->load()){
         auto start = std::chrono::high_resolution_clock::now();
         auto now = std::chrono::high_resolution_clock::now();
         auto diff = now - start;
