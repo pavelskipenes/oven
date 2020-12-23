@@ -1,3 +1,14 @@
+/**
+ * @file oven.cpp
+ * @author Pavel Skipenes (pavelgs@stud.ntnu.no)
+ * @brief Heat up your cold room in the winter. Or anytime really
+ * @version 0.1
+ * @date 23-12-2020
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include <chrono>
 #include <thread>
 #include <atomic>
