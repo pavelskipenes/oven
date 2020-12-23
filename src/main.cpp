@@ -16,12 +16,8 @@
 
 int main(int argc, char* argv[]){
 
-    if(argc != 2){
+    if(argc != 2 || !is_valid_load_rate(argv)){
         std::cout << "Usage: " << argv[0] << "load rate [1-100]\n";
-        return EXIT_FAILURE;
-    }
-
-    if(!is_valid_load_rate(argv)){
         return EXIT_FAILURE;
     }
 
