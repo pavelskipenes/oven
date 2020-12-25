@@ -1,5 +1,8 @@
 # Oven
 ![General CI](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)
+[![Issues](https://img.shields.io/github/issues/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/issues)
+[![Forks](https://img.shields.io/github/forks/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/network)
+[![Stars](https://img.shields.io/github/stars/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/stargazers)
 
 Transform your laptop into portable oven without spending money on actually oven.
 
