@@ -1,0 +1,9 @@
+cd
+debian
+doxygen
+github
+https
+nproc
+pacman
+pavelnoen
+sudo
