@@ -31,15 +31,19 @@ sudo make uninstall
 ```
 
 ## Local development
-for debian based systems
+### debian based systems
 ```bash
 sudo apt install -y git make doxygen
 ```
-for arch based systems
+- [act (testing)](https://github.com/nektos/act)
+
+### arch based systems
 ```bash
-sudo pacman -S git git doxygen 
+sudo pacman -S git make doxygen
+yay -S act
 ```
-for Windows
+### Windows
 - [Install git for windows](https://gitforwindows.org/)
 - [Install make for windows](http://gnuwin32.sourceforge.net/packages/make.htm)
-- [Install doxygen for windows](https://sourceforge.net/projects/doxygen/) For documentation only
+- [Install doxygen for windows (documentation)](https://sourceforge.net/projects/doxygen/)
+- [Install act (testing)](https://github.com/nektos/act)
