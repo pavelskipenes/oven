@@ -39,3 +39,8 @@ install: build
 .PHONY: uninstall
 uninstall:
 	$(QUITE) rm -f /usr/bin/oven
+
+GITHUB_DOCKER_IMAGE = ubuntu-latest=nektos/act-environments-ubuntu:18.04
+.PHONY: test
+test:
+	act -P $(GITHUB_DOCKER_IMAGE) push
