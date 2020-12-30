@@ -9,15 +9,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: compile
+    - name: Compile
       run: make -j$(nproc)
-    - name: install
+    - name: Install
       run: sudo make install
-    - name: start application
+    - name: Start application
       run: oven 100 & sleep 3
-    - name: get usage
+    - name: Get usage
       run: "ps -p $(pidof oven) u; echo number of cores on the system: $(nproc)"
-    - name: stop
+    - name: Stop application
       run: kill $(pidof oven) 
-    - name: uninstall
+    - name: Uninstall
       run: sudo make uninstall
