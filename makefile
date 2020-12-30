@@ -10,6 +10,7 @@ CC = g++
 
 SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))
 OBJ_FILES = $(subst $(SOURCE_DIR),$(BUILD_DIR),$(SRC_FILES:.cpp=.o))
+HEADER_FILES = $(foreach sdir,$(SOURCE_DIR)$(HEADERS_DIR),$(wildcard $(sdir)*.h))
 
 QUITE = @
 
@@ -43,4 +44,8 @@ uninstall:
 GITHUB_DOCKER_IMAGE = ubuntu-latest=nektos/act-environments-ubuntu:18.04
 .PHONY: test
 test:
-	act -P $(GITHUB_DOCKER_IMAGE) push
+	$(QUITE) act -P $(GITHUB_DOCKER_IMAGE)
+
+.PHONY: format
+format:
+	$(QUITE) clang-format -i $(SRC_FILES) $(HEADER_FILES)
