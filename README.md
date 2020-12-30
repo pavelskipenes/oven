@@ -42,6 +42,18 @@ sudo apt install -y git make doxygen clang-format
 sudo pacman -S git make doxygen clang
 yay -S act
 ```
+
+### local tests
+Test the changes locally before a push. First run will take long time since act will have to download the image that is used on GitHub.
+```bash
+make test
+```
+The default behavior of docker will fail this because it wants you to run the docker image as root. However this can be "fixed" by adding your user to the docker group
+```bash
+sudo groupadd docker && sudo gpasswd -a $USER docker
+```
+There are some security concerns that I didn't bother reading covered on [this thread](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo).
+
 ### Windows
 - [Install git for windows](https://gitforwindows.org/)
 - [Install make for windows](http://gnuwin32.sourceforge.net/packages/make.htm)

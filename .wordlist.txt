@@ -2,6 +2,8 @@ cd
 debian
 doxygen
 github
+gpasswd
+groupadd
 https
 MERCHANTABILITY
 NONINFRINGEMENT
