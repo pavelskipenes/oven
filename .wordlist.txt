@@ -3,8 +3,13 @@ debian
 doxygen
 github
 https
+MERCHANTABILITY
+NONINFRINGEMENT
 nproc
 pacman
+Pavel
 pavelnoen
+Skipenes
+sublicense
 sudo
 yay
