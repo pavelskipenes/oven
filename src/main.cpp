@@ -8,20 +8,18 @@
  * @copyright Copyright (c) 2020
  *
  */
-
 #include <iostream>
 
-#include "oven.h"
 #include "argparser.h"
+#include "oven.h"
 
-int main(int argc, char* argv[]){
+int main(int argc, char *argv[]) {
 
-    if(argc != 2 || !is_valid_load_rate(argv)){
-        std::cout << "Usage: " << argv[0] << "load rate [1-100]\n";
-        return EXIT_FAILURE;
-    }
+	if (argc != 2 || !is_valid_load_rate(argv)) {
+		std::cout << "Usage: " << argv[0] << "load rate [1-100]\n";
+		return EXIT_FAILURE;
+	}
 
-    oven(get_load_rate(argv));
-
-    return EXIT_SUCCESS;
+	oven(get_load_rate(argv));
+	return EXIT_SUCCESS;
 }
