@@ -1,5 +1,5 @@
 # Oven
-![General CI](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)
+[![General CI](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)
 [![Issues](https://img.shields.io/github/issues/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/issues)
 [![PR-open](https://img.shields.io/github/issues-pr/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/pulls)
 [![PR-closed](https://img.shields.io/github/issues-pr-closed/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/pulls)
@@ -33,13 +33,13 @@ sudo make uninstall
 ## Local development
 ### debian based systems
 ```bash
-sudo apt install -y git make doxygen
+sudo apt install -y git make doxygen clang-format
 ```
 - [act (testing)](https://github.com/nektos/act)
 
 ### arch based systems
 ```bash
-sudo pacman -S git make doxygen
+sudo pacman -S git make doxygen clang
 yay -S act
 ```
 ### Windows
@@ -47,3 +47,4 @@ yay -S act
 - [Install make for windows](http://gnuwin32.sourceforge.net/packages/make.htm)
 - [Install doxygen for windows (documentation)](https://sourceforge.net/projects/doxygen/)
 - [Install act (testing)](https://github.com/nektos/act)
+- [Install clang (formatting)](https://releases.llvm.org/download.html)
