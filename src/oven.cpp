@@ -12,7 +12,6 @@
 #include <chrono>
 #include <csignal>
 #include <thread>
-#include <vector>
 
 #include "core_count.h"
 #include "oven.h"
@@ -23,7 +22,7 @@ static void signalHandler(int signum);
 
 void oven(int load_rate) {
 	signal(SIGINT, signalHandler);
-	std::vector<std::thread> threads(get_core_count());
+	std::thread threads[get_core_count()];
 
 	for (auto &thread : threads) {
 		thread = std::thread(oven_thread, load_rate, &terminate_threads);
@@ -32,6 +31,7 @@ void oven(int load_rate) {
 	for (auto &thread : threads) {
 		thread.join();
 	}
+
 }
 
 void signalHandler(int signum) {
