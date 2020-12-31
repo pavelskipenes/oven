@@ -1,0 +1,17 @@
+name: Cpp static analysis
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install cppcheck
+      run: sudo apt install -y cppcheck
+    - name: Get version cppcheck
+      run: cppcheck --version
+    - name: Run cppcheck
+      run: cppcheck --enable=all --error-exitcode=1 -I src/headers/ --suppress=missingIncludeSystem .

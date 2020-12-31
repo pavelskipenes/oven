@@ -13,7 +13,6 @@
 #include "exec.h"
 
 std::string exec(const char *cmd) {
-	char buffer[1023];
 	std::string result = "";
 	FILE *pipe;
 
@@ -27,6 +26,7 @@ std::string exec(const char *cmd) {
 		throw std::runtime_error("popen() failed!");
 	}
 	try {
+		char buffer[1023];
 		while (fgets(buffer, sizeof buffer, pipe) != NULL) {
 			result += buffer;
 		}
