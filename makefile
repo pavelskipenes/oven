@@ -3,6 +3,7 @@ NAME_EXECUTABLE=oven
 BUILD_DIR = build/
 SOURCE_DIR = src/
 HEADERS_DIR = headers/
+CONFIG_DIR = config/
 
 INCLUDE_DIR =$(SOURCE_DIR)$(HEADERS_DIR)
 CPP_FLAGS = -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread
@@ -27,7 +28,7 @@ $(BUILD_DIR):
 
 .PHONY: docs
 docs:
-	$(QUITE) doxygen
+	$(QUITE) doxygen $(CONFIG_DIR)doxyfile
 
 .PHONY: clean
 clean:
@@ -48,4 +49,4 @@ test:
 
 .PHONY: format
 format:
-	$(QUITE) clang-format -i $(SRC_FILES) $(HEADER_FILES)
+	$(QUITE) clang-format -style=$(CONFIG_DIR).clang-format -i $(SRC_FILES) $(HEADER_FILES)
