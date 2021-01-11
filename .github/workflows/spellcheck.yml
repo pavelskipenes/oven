@@ -10,4 +10,4 @@ jobs:
     - uses: pavelskipenes/spellcheck-github-actions@master
       name: Spellcheck
       with:
-        configPath: ".config/.spellcheck.yml"
+        config-path: ".config/.spellcheck.yml"
