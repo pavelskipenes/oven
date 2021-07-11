@@ -17,9 +17,11 @@ Transform your laptop into portable oven without spending money on actually oven
 ![KDE System Guard](docs/k_sys_guard.png)
 ![htop](docs/htop.png)
 
-## Compile from source
+## Installation
+
+### Compile from source
 ```bash
-git clone https://github.com/pavelnoen94/oven.git
+git clone https://github.com/pavelskipenes/oven.git
 cd oven
 make -j$(nproc)
 # execute with 50% load:
@@ -30,20 +32,33 @@ sudo make install
 sudo make uninstall
 ```
 
+### Run using Docker
+```bash
+git clone https://github.com/pavelskipenes/oven.git
+cd oven
+docker build -t oven .
+docker run oven # or add -d flag to run oven in the background and leave your shell interactive
+```
+
+To remove the image run:
+```bash
+docker rmi oven -f
+```
+
 ## Local development
-### debian based systems
+### Debian based systems
 ```bash
 sudo apt install -y git make doxygen clang-format
 ```
 - [act (testing)](https://github.com/nektos/act)
 
-### arch based systems
+### Arch based systems
 ```bash
 sudo pacman -S git make doxygen clang
 yay -S act
 ```
 
-### local tests
+### Local tests
 Test the changes locally before a push. First run will take long time since act will have to download the image that is used on GitHub.
 ```bash
 make test
