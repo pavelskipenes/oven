@@ -35,11 +35,11 @@ clean:
 
 .PHONY: install
 install: build
-	$(QUITE) cp build/oven /usr/bin/oven
+	$(QUITE) cp build/$(NAME_EXECUTABLE) /usr/bin/$(NAME_EXECUTABLE)
 
 .PHONY: uninstall
 uninstall:
-	$(QUITE) rm -f /usr/bin/oven
+	$(QUITE) rm -f /usr/bin/$(NAME_EXECUTABLE)
 
 GITHUB_DOCKER_IMAGE = ubuntu-latest=nektos/act-environments-ubuntu:18.04
 .PHONY: test
