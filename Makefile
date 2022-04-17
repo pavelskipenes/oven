@@ -1,20 +1,20 @@
 NAME_EXECUTABLE=oven
 
-BUILD_DIR = build/
-SOURCE_DIR = src/
-INCLUDE_DIR = include/
-CONFIG_DIR = .config/
+BUILD_DIR := build/
+SOURCE_DIR := src/
+INCLUDE_DIR := include/
+CONFIG_DIR := .config/
 
-CPP_FLAGS = -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread
-CC = g++
+CPP_FLAGS := -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread
+CC := g++
 
 SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))
-OBJ_FILES = $(subst $(SOURCE_DIR),$(BUILD_DIR),$(SRC_FILES:.cpp=.o))
-HEADER_FILES = $(foreach sdir,$(INCLUDE_DIR),$(wildcard $(sdir)*.hpp))
+OBJ_FILES := $(subst $(SOURCE_DIR),$(BUILD_DIR),$(SRC_FILES:.cpp=.o))
+HEADER_FILES := $(foreach sdir,$(INCLUDE_DIR),$(wildcard $(sdir)*.hpp))
 
-QUITE = @
+QUITE := @
 
-.DEFAULT_GOAL = build
+.DEFAULT_GOAL := build
 build: $(OBJ_FILES) | $(BUILD_DIR)
 	$(QUITE) echo building $(NAME_EXECUTABLE)
 	$(QUITE) $(CC) $(CPP_FLAGS) $(OBJ_FILES) -o $(BUILD_DIR)$(NAME_EXECUTABLE)
