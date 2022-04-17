@@ -46,16 +46,10 @@ docker rmi oven -f
 ```
 
 ## Local development
-### Debian based systems
-```bash
-sudo apt install -y git make doxygen clang-format
-```
-- [act (testing)](https://github.com/nektos/act)
-
-### Arch based systems
 ```bash
 sudo pacman -S git make doxygen clang
-yay -S act
+paru -S act
+systemctl start docker
 ```
 
 ### Local tests

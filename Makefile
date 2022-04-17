@@ -3,7 +3,7 @@ NAME_EXECUTABLE=oven
 BUILD_DIR = build/
 SOURCE_DIR = src/
 INCLUDE_DIR = include/
-CONFIG_DIR = config/
+CONFIG_DIR = .config/
 
 CPP_FLAGS = -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread
 CC = g++
@@ -16,10 +16,12 @@ QUITE = @
 
 .DEFAULT_GOAL = build
 build: $(OBJ_FILES) | $(BUILD_DIR)
+	$(QUITE) echo building $(NAME_EXECUTABLE)
 	$(QUITE) $(CC) $(CPP_FLAGS) $(OBJ_FILES) -o $(BUILD_DIR)$(NAME_EXECUTABLE)
 
 # generic object file generation
 $(BUILD_DIR)%.o : $(SOURCE_DIR)%.cpp | $(BUILD_DIR)
+	$(QUITE) echo compiling $(notdir $<)
 	$(QUITE) $(CC) $< $(CPP_FLAGS) -c -o $@
 
 $(BUILD_DIR):
@@ -41,11 +43,16 @@ install: build
 uninstall:
 	$(QUITE) rm -f /usr/bin/$(NAME_EXECUTABLE)
 
-GITHUB_DOCKER_IMAGE = ubuntu-latest=nektos/act-environments-ubuntu:18.04
+GITHUB_DOCKER_IMAGE = ubuntu-18.04=nektos/act-environments-ubuntu:18.04
 .PHONY: test
 test:
 	$(QUITE) act -P $(GITHUB_DOCKER_IMAGE)
 
 .PHONY: format
 format:
-	$(QUITE) clang-format -style=$(CONFIG_DIR).clang-format -i $(SRC_FILES) $(HEADER_FILES)
+	$(QUITE) clang-format -style="Microsoft" -i $(SRC_FILES) $(HEADER_FILES)
+
+.PHONY: check
+check:
+	$(QUITE) clang-tidy -checks="cppcoreguidelines-*" -format-style="Microsoft" -header-filter=".*" $(SRC_FILES) -- -I$(INCLUDE_DIR)
+	$(QUITE) cppcheck --enable=all $(SRC_FILES) -I$(INCLUDE_DIR) --suppress=missingIncludeSystem

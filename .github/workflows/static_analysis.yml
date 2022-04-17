@@ -1,0 +1,19 @@
+name: Cpp static analysis
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt install -y cppcheck make clang-tidy
+    - name: Get version cppcheck
+      run: cppcheck --version
+    - name: Get version clang-tidy
+      run: clang-tidy --version
+    - name: Run static analysis
+      run: make check
