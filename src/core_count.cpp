@@ -10,8 +10,8 @@
  */
 #include <iostream>
 
-#include "exec.h"
-#include "core_count.h"
+#include "exec.hpp"
+#include "core_count.hpp"
 
 int get_core_count() {
 	int number_of_cores;

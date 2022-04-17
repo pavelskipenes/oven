@@ -13,8 +13,8 @@
 #include <csignal>
 #include <thread>
 
-#include "core_count.h"
-#include "oven.h"
+#include "core_count.hpp"
+#include "oven.hpp"
 
 static std::atomic<bool> terminate_threads(false);
 static void oven_thread(int load_rate, std::atomic<bool> *terminate_ptr);

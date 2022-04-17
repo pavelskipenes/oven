@@ -10,7 +10,7 @@
  */
 #include <iostream>
 
-#include "exec.h"
+#include "exec.hpp"
 
 std::string exec(const char *cmd) {
 	std::string result = "";

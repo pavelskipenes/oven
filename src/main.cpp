@@ -10,8 +10,8 @@
  */
 #include <iostream>
 
-#include "argparser.h"
-#include "oven.h"
+#include "argparser.hpp"
+#include "oven.hpp"
 
 int main(int argc, char *argv[]) {
 

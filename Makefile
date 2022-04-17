@@ -10,7 +10,7 @@ CC = g++
 
 SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))
 OBJ_FILES = $(subst $(SOURCE_DIR),$(BUILD_DIR),$(SRC_FILES:.cpp=.o))
-HEADER_FILES = $(foreach sdir,$(INCLUDE_DIR),$(wildcard $(sdir)*.h))
+HEADER_FILES = $(foreach sdir,$(INCLUDE_DIR),$(wildcard $(sdir)*.hpp))
 
 QUITE = @
 

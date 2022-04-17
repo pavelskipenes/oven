@@ -11,7 +11,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "argparser.h"
+#include "argparser.hpp"
 
 bool is_valid_load_rate(char *argv[]) {
 
