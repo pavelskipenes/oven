@@ -2,16 +2,15 @@ NAME_EXECUTABLE=oven
 
 BUILD_DIR = build/
 SOURCE_DIR = src/
-HEADERS_DIR = headers/
+INCLUDE_DIR = include/
 CONFIG_DIR = config/
 
-INCLUDE_DIR =$(SOURCE_DIR)$(HEADERS_DIR)
 CPP_FLAGS = -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread
 CC = g++
 
 SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))
 OBJ_FILES = $(subst $(SOURCE_DIR),$(BUILD_DIR),$(SRC_FILES:.cpp=.o))
-HEADER_FILES = $(foreach sdir,$(SOURCE_DIR)$(HEADERS_DIR),$(wildcard $(sdir)*.h))
+HEADER_FILES = $(foreach sdir,$(INCLUDE_DIR),$(wildcard $(sdir)*.h))
 
 QUITE = @
 
