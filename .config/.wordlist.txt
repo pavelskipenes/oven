@@ -10,8 +10,8 @@ NONINFRINGEMENT
 nproc
 pacman
 Pavel
-pavelnoen
 Skipenes
 sublicense
 sudo
 yay
+paru

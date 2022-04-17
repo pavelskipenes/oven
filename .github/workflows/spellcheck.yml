@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: pavelskipenes/spellcheck-github-actions@master
+    - uses: rojopolis/spellcheck-github-actions
       name: Spellcheck
       with:
         config_path: ".config/.spellcheck.yml"
