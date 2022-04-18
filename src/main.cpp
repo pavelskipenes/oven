@@ -5,7 +5,7 @@
  * @version 0.1
  * @date 18-12-2020
  *
- * @copyright Copyright (c) 2020
+ * @copyright Copyright Pavel Skipenes (c) 2022
  *
  */
 #include <iostream>

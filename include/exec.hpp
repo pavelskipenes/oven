@@ -1,12 +1,12 @@
 #pragma once
 /**
- * @file exec.h
+ * @file exec.hpp
  * @author Pavel Skipenes (pavelgs@stud.ntnu.no)
  * @brief Execute host commands with this module
  * @version 0.1
  * @date 23-12-2020
  *
- * @copyright Copyright (c) 2020
+ * @copyright Copyright Pavel Skipenes (c) 2022
  *
  */
 #include <string>
