@@ -9,41 +9,26 @@
  *
  */
 #include <iostream>
+#include <memory>
 
 #include "exec.hpp"
 
-std::string exec(const char *cmd)
+std::string exec(const std::string &cmd)
 {
-    std::string result = "";
-    FILE *pipe;
-
-#ifdef unix
-    pipe = popen(cmd, "r");
-#else
-    pipe = _popen(cmd, "r");
-#endif
+    std::string result;
+    std::shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
 
     if (!pipe)
     {
         throw std::runtime_error("popen() failed!");
     }
-    try
+    std::array<char, 128> buffer;
+    while (!feof(pipe.get()))
     {
-        char buffer[1023];
-        while (fgets(buffer, sizeof buffer, pipe) != NULL)
+        if (fgets(buffer.data(), 128, pipe.get()) != nullptr)
         {
-            result += buffer;
+            result += buffer.data();
         }
     }
-    catch (...)
-    {
-        pclose(pipe);
-        throw;
-    }
-#ifdef unix
-    pclose(pipe);
-#else
-    _pclose(pipe);
-#endif
     return result;
 }

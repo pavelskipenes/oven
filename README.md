@@ -9,7 +9,6 @@
 Transform your laptop into portable oven without spending money on actually oven.
 
 ## Features
-- Cross platform
 - Adjustable heat output
 - Uses all cores
 
@@ -62,10 +61,3 @@ The default behavior of docker will fail this because it wants you to run the do
 sudo groupadd docker && sudo gpasswd -a $USER docker
 ```
 There are some security concerns that I didn't bother reading covered on [this thread](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo).
-
-### Windows
-- [Install git for windows](https://gitforwindows.org/)
-- [Install make for windows](http://gnuwin32.sourceforge.net/packages/make.htm)
-- [Install doxygen for windows (documentation)](https://sourceforge.net/projects/doxygen/)
-- [Install act (testing)](https://github.com/nektos/act)
-- [Install clang (formatting)](https://releases.llvm.org/download.html)

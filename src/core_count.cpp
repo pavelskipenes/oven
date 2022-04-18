@@ -34,3 +34,6 @@ int get_core_count()
     }
     return number_of_cores;
 }
+
+// create a function that can execute arbitrary command on host
+// and return the output
