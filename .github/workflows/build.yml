@@ -9,6 +9,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt update -y && sudo apt install make gcc
     - name: Compile
       run: make -j$(nproc)
     - name: Install

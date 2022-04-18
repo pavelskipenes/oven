@@ -43,7 +43,7 @@ install: build
 uninstall:
 	$(QUITE) rm -f /usr/bin/$(NAME_EXECUTABLE)
 
-GITHUB_DOCKER_IMAGE = ubuntu-18.04=nektos/act-environments-ubuntu:18.04
+GITHUB_DOCKER_IMAGE = ubuntu-latest=nektos/act-environments-ubuntu:18.04
 .PHONY: test
 test:
 	$(QUITE) act -P $(GITHUB_DOCKER_IMAGE)

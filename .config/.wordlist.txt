@@ -9,6 +9,7 @@ MERCHANTABILITY
 NONINFRINGEMENT
 nproc
 pacman
+pavelskipenes
 Pavel
 Skipenes
 sublicense
