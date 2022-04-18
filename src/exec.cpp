@@ -12,32 +12,38 @@
 
 #include "exec.hpp"
 
-std::string exec(const char *cmd) {
-	std::string result = "";
-	FILE *pipe;
+std::string exec(const char *cmd)
+{
+    std::string result = "";
+    FILE *pipe;
 
 #ifdef unix
-	pipe = popen(cmd, "r");
+    pipe = popen(cmd, "r");
 #else
-	pipe = _popen(cmd, "r");
+    pipe = _popen(cmd, "r");
 #endif
 
-	if (!pipe) {
-		throw std::runtime_error("popen() failed!");
-	}
-	try {
-		char buffer[1023];
-		while (fgets(buffer, sizeof buffer, pipe) != NULL) {
-			result += buffer;
-		}
-	} catch (...) {
-		pclose(pipe);
-		throw;
-	}
+    if (!pipe)
+    {
+        throw std::runtime_error("popen() failed!");
+    }
+    try
+    {
+        char buffer[1023];
+        while (fgets(buffer, sizeof buffer, pipe) != NULL)
+        {
+            result += buffer;
+        }
+    }
+    catch (...)
+    {
+        pclose(pipe);
+        throw;
+    }
 #ifdef unix
-	pclose(pipe);
+    pclose(pipe);
 #else
-	_pclose(pipe);
+    _pclose(pipe);
 #endif
-	return result;
+    return result;
 }

@@ -10,23 +10,27 @@
  */
 #include <iostream>
 
-#include "exec.hpp"
 #include "core_count.hpp"
+#include "exec.hpp"
 
-int get_core_count() {
-	int number_of_cores;
+int get_core_count()
+{
+    int number_of_cores;
 
-	try {
+    try
+    {
 #ifdef unix
-		number_of_cores = std::stoi(exec("/usr/bin/nproc"));
+        number_of_cores = std::stoi(exec("/usr/bin/nproc"));
 #else
-		// TODO: windows implementation
+        // TODO: windows implementation
 #endif
-	} catch (const std::runtime_error &e) {
-		std::cerr << e.what() << '\n';
-		std::cerr << "Could not find out the number of cores on the host.\n";
-		std::cerr << "Falling back to using one core.\n";
-		number_of_cores = 1;
-	}
-	return number_of_cores;
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cerr << e.what() << '\n';
+        std::cerr << "Could not find out the number of cores on the host.\n";
+        std::cerr << "Falling back to using one core.\n";
+        number_of_cores = 1;
+    }
+    return number_of_cores;
 }
