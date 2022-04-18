@@ -23,7 +23,6 @@ bool is_valid_load_rate(char *argv[])
         if (load_rate > 101 || load_rate < 0)
         {
             throw std::out_of_range("value needs to be between 1 and 100");
-            return false;
         }
     }
     catch (const std::invalid_argument &ia)
