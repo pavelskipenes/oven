@@ -2,12 +2,12 @@
 <div style="text-align:center">
     <img src="./docs/logo.svg" height="200"></img>
 
-[![General CI](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)
-[![Issues](https://img.shields.io/github/issues/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/issues)
-[![PR-open](https://img.shields.io/github/issues-pr/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/pulls)
-[![PR-closed](https://img.shields.io/github/issues-pr-closed/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/pulls)
-[![Forks](https://img.shields.io/github/forks/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/network)
-[![Stars](https://img.shields.io/github/stars/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/stargazers)
+[![General CI](https://github.com/pavelskipenes/oven/workflows/General%20CI/badge.svg)](https://github.com/pavelskipenes/oven/workflows/General%20CI/badge.svg)
+[![Issues](https://img.shields.io/github/issues/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/issues)
+[![PR-open](https://img.shields.io/github/issues-pr/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/pulls)
+[![PR-closed](https://img.shields.io/github/issues-pr-closed/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/pulls)
+[![Forks](https://img.shields.io/github/forks/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/network)
+[![Stars](https://img.shields.io/github/stars/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/stargazers)
 </div>
 
 Transform your laptop into portable oven without spending money on actually oven.

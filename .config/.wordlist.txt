@@ -16,3 +16,8 @@ sublicense
 sudo
 yay
 paru
+img
+svg
+io
+cppcheck
+AUR
