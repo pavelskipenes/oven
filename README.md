@@ -1,35 +1,34 @@
 # Oven
+<div style="text-align:center">
+    <img src="./docs/logo.svg" height="200"></img>
+
 [![General CI](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)](https://github.com/pavelnoen94/oven/workflows/General%20CI/badge.svg)
 [![Issues](https://img.shields.io/github/issues/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/issues)
 [![PR-open](https://img.shields.io/github/issues-pr/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/pulls)
 [![PR-closed](https://img.shields.io/github/issues-pr-closed/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/pulls)
 [![Forks](https://img.shields.io/github/forks/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/network)
 [![Stars](https://img.shields.io/github/stars/pavelnoen94/oven.svg)](https://github.com/pavelnoen94/oven/stargazers)
+</div>
 
 Transform your laptop into portable oven without spending money on actually oven.
+<object data="docs/logo.svg" height="100" width="100"></object>
 
 ## Features
 - Adjustable heat output
 - Uses all cores
 
-![Gnome system monitor](docs/gnome_system_monitor.png)
-![KDE System Guard](docs/k_sys_guard.png)
-![htop](docs/htop.png)
+## Supported systems
+- Linux
+- Might work on mac and Free/Open BSD
+
+<img src="./docs/gnome_system_monitor.png" alt="Gnome system monitor" width="200"/>
+<img src="./docs/k_sys_guard.png" alt="KDE System Guard" width="200"/>
+<img src="./docs/htop.png" alt="htop" width="200"/>
 
 ## Installation
 
-### Compile from source
-```bash
-git clone https://github.com/pavelskipenes/oven.git
-cd oven
-make -j$(nproc)
-# execute with 50% load:
-build/oven 50
-# install:
-sudo make install
-# uninstall:
-sudo make uninstall
-```
+### Package manager
+Should I upload this to the AUR? 🤔
 
 ### Run using Docker
 ```bash
@@ -44,18 +43,32 @@ To remove the image run:
 docker rmi oven -f
 ```
 
+### Compile from source
+```bash
+git clone https://github.com/pavelskipenes/oven.git
+cd oven
+make
+# execute with 50% load:
+build/oven 50
+# install:
+sudo make install
+# uninstall:
+sudo make uninstall
+```
+
 ## Local development
 ```bash
-sudo pacman -S git make doxygen clang
-paru -S act
+sudo pacman -Syu git make doxygen clang gcc
+paru -Syu act
 systemctl start docker
 ```
 
 ### Local tests
-Test the changes locally before a push. First run will take long time since act will have to download the image that is used on GitHub.
+Test the changes locally before a push. First run will take long time since [act](https://github.com/nektos/act) will have to download the image that is used on GitHub.
 ```bash
 make test
 ```
+`make test` will run static analysis from [cppcheck](https://github.com/danmar/cppcheck) and complain about all your mistakes.
 The default behavior of docker will fail this because it wants you to run the docker image as root. However this can be "fixed" by adding your user to the docker group
 ```bash
 sudo groupadd docker && sudo gpasswd -a $USER docker

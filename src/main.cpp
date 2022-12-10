@@ -3,7 +3,7 @@
  * @author Pavel Skipenes (pavelgs@stud.ntnu.no)
  * @brief Just main
  * @version 0.1
- * @date 18-12-2020
+ * @date 10-12-2022
  *
  * @copyright Copyright Pavel Skipenes (c) 2022
  *
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     if (argc != 2 || !is_valid_load_rate(argv))
     {
-        std::cout << "Usage: " << argv[0] << "load rate [1-100]\n";
+        std::cout << "usage: " << argv[0] << " [1 - 100]\n";
         return EXIT_FAILURE;
     }
 

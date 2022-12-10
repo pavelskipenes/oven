@@ -11,12 +11,12 @@
 #include <array>
 #include <iostream>
 #include <memory>
+#include <sstream>
 
 #include "exec.hpp"
 
 std::string exec(const std::string &cmd)
 {
-    std::string result;
     std::shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
 
     if (!pipe)
@@ -24,12 +24,13 @@ std::string exec(const std::string &cmd)
         throw std::runtime_error("popen() failed!");
     }
     std::array<char, 128> buffer;
+    std::stringstream ss;
     while (!feof(pipe.get()))
     {
         if (fgets(buffer.data(), 128, pipe.get()) != nullptr)
         {
-            result += buffer.data();
+            ss << buffer.data();
         }
     }
-    return result;
+    return ss.str();
 }
