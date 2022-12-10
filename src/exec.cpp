@@ -3,11 +3,12 @@
  * @author Pavel Skipenes (pavelgs@stud.ntnu.no)
  * @brief Execute host commands with this module
  * @version 0.1
- * @date 23-12-2020
+ * @date 10-12-2022
  *
  * @copyright Copyright Pavel Skipenes (c) 2022
  *
  */
+#include <array>
 #include <iostream>
 #include <memory>
 
