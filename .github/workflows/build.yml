@@ -18,8 +18,8 @@ jobs:
     - name: Start application
       run: oven 100 & sleep 3
     - name: Get usage
-      run: "ps -p $(pidof oven) u; echo number of cores on the system: $(nproc)"
+      run: "ps -C oven; echo number of cores on the system: $(nproc)"
     - name: Stop application
-      run: kill $(pidof oven) 
+      run: killall oven || true
     - name: Uninstall
       run: sudo make uninstall
