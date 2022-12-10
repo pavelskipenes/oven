@@ -12,6 +12,7 @@
 #include <chrono>
 #include <csignal>
 #include <thread>
+#include <vector>
 
 #include "core_count.hpp"
 #include "oven.hpp"
@@ -23,7 +24,7 @@ static void signalHandler(int signum);
 void oven(int load_rate)
 {
     signal(SIGINT, signalHandler);
-    std::thread threads[get_core_count()];
+    std::vector<std::thread> threads(get_core_count());
 
     for (auto &thread : threads)
     {
@@ -46,7 +47,7 @@ void oven_thread(int load_rate, std::atomic<bool> *terminate_ptr)
 {
     using namespace std::chrono_literals;
     const std::chrono::milliseconds CYCLE_TIME = 100ms;
-
+    const auto PERCENT_100 = 100;
     while (!terminate_ptr->load())
     {
         auto start = std::chrono::high_resolution_clock::now();
@@ -58,7 +59,7 @@ void oven_thread(int load_rate, std::atomic<bool> *terminate_ptr)
             now = std::chrono::high_resolution_clock::now();
             diff = now - start;
 
-            if (diff > (float)load_rate / 100 * CYCLE_TIME)
+            if (diff > (float)load_rate / PERCENT_100 * CYCLE_TIME)
             {
                 break;
             }

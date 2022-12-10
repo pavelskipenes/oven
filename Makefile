@@ -5,7 +5,8 @@ SOURCE_DIR := src/
 INCLUDE_DIR := include/
 CONFIG_DIR := .config/
 
-CPP_FLAGS := -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread
+DIALECT := --std=c++17
+CPP_FLAGS := -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread $(DIALECT)
 CC := g++
 
 SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))
@@ -54,5 +55,6 @@ format:
 
 .PHONY: check
 check:
-	$(QUITE) clang-tidy -checks="cppcoreguidelines-*" -format-style="Microsoft" -header-filter=".*" $(SRC_FILES) -- -I$(INCLUDE_DIR)
-	$(QUITE) cppcheck --enable=all $(SRC_FILES) -I$(INCLUDE_DIR) --suppress=missingIncludeSystem
+# clang tidy does not work with modern c++ features and gives false positive errors
+#$(QUITE) clang-tidy -p . -checks="cppcoreguidelines-*" -format-style="Microsoft" -header-filter=".*" $(SRC_FILES) -- -I$(INCLUDE_DIR)
+	$(QUITE) cppcheck $(DIALECT) --enable=all $(SRC_FILES) -I$(INCLUDE_DIR) --suppress=missingIncludeSystem

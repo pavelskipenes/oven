@@ -3,43 +3,45 @@
  * @author Pavel Skipenes (pavelgs@stud.ntnu.no)
  * @brief Module that parses and validates the arguments
  * @version 0.1
- * @date 23-12-2020
+ * @date 10-12-2022
  *
  * @copyright Copyright Pavel Skipenes (c) 2022
  *
  */
 #include <cmath>
 #include <iostream>
+#include <optional>
+#include <sstream>
+#include <string>
+#include <variant>
 
 #include "argparser.hpp"
-
-bool is_valid_load_rate(char *argv[])
+std::variant<int, std::string> get_load_rate(const std::string_view &user_input)
 {
-
+    int load_rate = 0;
     try
     {
-        int load_rate;
-        load_rate = round(std::stoi(argv[1]));
-        if (load_rate > 101 || load_rate < 0)
+        load_rate = static_cast<int>(round(std::stoi(std::string(user_input.data()))));
+        const auto MAX_LOAD_RATE = 100;
+        if (load_rate > MAX_LOAD_RATE || load_rate < 1)
         {
-            throw std::out_of_range("value needs to be between 1 and 100");
+            return std::string("[ERROR]: [LOAD] needs to be between 1 and 100\n");
         }
     }
     catch (const std::invalid_argument &ia)
     {
-        std::cerr << "Invalid argument: " << ia.what() << "\n";
-        return false;
+        // thrown by round()
+        std::stringstream ss;
+        ss << "Invalid argument: " << ia.what() << "\n";
+        return ss.str();
     }
     catch (const std::out_of_range &oor)
     {
-        std::cerr << "Invalid argument: " << oor.what() << "\n";
-        return false;
+        // thrown by round()
+        std::stringstream ss;
+        ss << "Invalid argument: " << oor.what() << "\n";
+        return ss.str();
     }
 
-    return true;
-}
-
-int get_load_rate(char *argv[])
-{
-    return round(std::stoi(argv[1]));
+    return load_rate;
 }

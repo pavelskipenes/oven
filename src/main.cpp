@@ -13,15 +13,37 @@
 #include "argparser.hpp"
 #include "oven.hpp"
 
-int main(int argc, char *argv[])
+void usage_and_exit(const std::string_view &program_name)
 {
+    std::cout << "usage: " << program_name << " [load]\n";
+    std::cout << "[load] desired cpu load between 1 - 100 percent across all cores. \n";
+    exit(EXIT_FAILURE);
+}
 
-    if (argc != 2 || !is_valid_load_rate(argv))
+int main(const int argc, const char *argv[])
+{
+    const std::string_view program_name = argv[0];
+    if (argc != 2)
     {
-        std::cout << "usage: " << argv[0] << " [1 - 100]\n";
-        return EXIT_FAILURE;
+        usage_and_exit(program_name);
     }
 
-    oven(get_load_rate(argv));
+    const std::string_view maybe_load_rate = argv[1];
+    auto load_rate_or_error = get_load_rate(maybe_load_rate);
+
+    switch (load_rate_or_error.index())
+    {
+    case 0: // load_rate
+        oven(std::get<int>(load_rate_or_error));
+        break;
+
+    case 1: // error
+        std::cerr << std::get<std::string>(load_rate_or_error);
+        usage_and_exit(program_name);
+        break;
+    default:
+        abort();
+    }
+
     return EXIT_SUCCESS;
 }

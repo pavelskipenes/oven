@@ -9,6 +9,7 @@
  *
  */
 #include <iostream>
+#include <string_view>
 
 #include "core_count.hpp"
 #include "exec.hpp"
@@ -19,7 +20,7 @@ int get_core_count()
     try
     {
 #ifdef __USE_POSIX2
-        number_of_cores = std::stoi(exec("/usr/bin/nproc"));
+        number_of_cores = std::stoi(exec(std::string_view("/usr/bin/nproc")));
 #else
 #warning "Unsupported system. Defaulting to only one core."
 #endif

@@ -4,22 +4,21 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: sudo apt update -y && sudo apt install make gcc
-    - name: Compile
-      run: make -j$(nproc)
-    - name: Install
-      run: sudo make install
-    - name: Start application
-      run: oven 100 & sleep 3
-    - name: Get usage
-      run: "ps -C oven; echo number of cores on the system: $(nproc)"
-    - name: Stop application
-      run: killall oven || true
-    - name: Uninstall
-      run: sudo make uninstall
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo apt install make gcc
+      - name: Compile
+        run: make -j$(nproc)
+      - name: Install
+        run: sudo make install
+      - name: Start application
+        run: oven 100 & sleep 3
+      - name: Get usage
+        run: "ps -C oven -o %C; echo number of cores on the system: $(nproc)"
+      - name: Stop application
+        run: killall oven || true
+      - name: Uninstall
+        run: sudo make uninstall

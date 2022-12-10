@@ -12,22 +12,24 @@
 #include <iostream>
 #include <memory>
 #include <sstream>
+#include <string_view>
 
 #include "exec.hpp"
 
-std::string exec(const std::string &cmd)
+std::string exec(const std::string_view &cmd)
 {
-    std::shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
+    std::shared_ptr<FILE> pipe(popen(std::string(cmd).data(), "r"), pclose);
 
     if (!pipe)
     {
         throw std::runtime_error("popen() failed!");
     }
-    std::array<char, 128> buffer;
+    const auto BUFF_LEN = 128;
+    std::array<char, BUFF_LEN> buffer = {};
     std::stringstream ss;
     while (!feof(pipe.get()))
     {
-        if (fgets(buffer.data(), 128, pipe.get()) != nullptr)
+        if (fgets(buffer.data(), BUFF_LEN, pipe.get()) != nullptr)
         {
             ss << buffer.data();
         }
