@@ -6,7 +6,7 @@ INCLUDE_DIR := include/
 CONFIG_DIR := .config/
 
 DIALECT := --std=c++17
-CPP_FLAGS := -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread $(DIALECT)
+CPP_FLAGS := -O0 -g3 -Wall -Wextra -I $(INCLUDE_DIR) -pthread $(DIALECT) -static
 CC := g++
 
 SRC_FILES := $(foreach sdir,$(SOURCE_DIR),$(wildcard $(sdir)*.cpp))

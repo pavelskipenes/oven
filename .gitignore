@@ -1,5 +1,6 @@
-.vscode
 build
+.cache
+compile_commands.json
 docs/html/*
 docs/latex/*
-compile_commands.json
+.vscode
