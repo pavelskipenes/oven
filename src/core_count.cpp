@@ -17,9 +17,13 @@
 int get_core_count()
 {
     int number_of_cores = 1;
+
+    // Bug: This check only if the compilation is done on a posix complient system.
+    // This check should be run time because users might cross compile the application.
     try
     {
 #ifdef __USE_POSIX2
+        // Bug: In Alpine Linux nproc is not available. Maybe check if the file exists?
         number_of_cores = std::stoi(exec(std::string_view("/usr/bin/nproc")));
 #else
 #warning "Unsupported system. Defaulting to only one core."

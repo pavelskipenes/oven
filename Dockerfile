@@ -1,11 +1,12 @@
-FROM alpine
+FROM alpine:3.3
 
-RUN apk update
+WORKDIR /app
 
-RUN apk add g++ make
+RUN apk --no-cache add g++ make
 
 COPY . .
 
 RUN make install
 
 CMD ["oven", "100"]
+
