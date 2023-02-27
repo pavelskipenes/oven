@@ -8,6 +8,7 @@
 [![PR-closed](https://img.shields.io/github/issues-pr-closed/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/pulls)
 [![Forks](https://img.shields.io/github/forks/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/network)
 [![Stars](https://img.shields.io/github/stars/pavelskipenes/oven.svg)](https://github.com/pavelskipenes/oven/stargazers)
+[![CodeFactor](https://www.codefactor.io/repository/github/pavelskipenes/oven/badge/master)](https://www.codefactor.io/repository/github/pavelskipenes/oven/overview/master)
 </div>
 
 Transform your laptop into portable oven without spending money on actually oven.
