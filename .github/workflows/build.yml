@@ -22,3 +22,13 @@ jobs:
         run: killall oven || true
       - name: Uninstall
         run: sudo make uninstall
+  auto-merge:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
